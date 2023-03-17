@@ -1,9 +1,9 @@
 setup() {
   set -eu -o pipefail
   export DIR="$( cd "$( dirname "$BATS_TEST_FILENAME" )" >/dev/null 2>&1 && pwd )/.."
-  export TESTDIR=~/tmp/testchrome
+  export TESTDIR=~/tmp/testfirefox
   mkdir -p $TESTDIR
-  export PROJNAME=testchrome
+  export PROJNAME=testfirefox
   export DDEV_NON_INTERACTIVE=true
   ddev delete -Oy ${PROJNAME} >/dev/null 2>&1 || true
   cd "${TESTDIR}"
@@ -28,7 +28,7 @@ teardown() {
   ddev get ${DIR}
   ddev restart
   ddev exec ls
-  ddev exec "curl -v selenium-chrome:4444/wd/hub/status"
+  ddev exec "curl -v selenium-firefox:4444/wd/hub/status"
   echo "Run a FunctionalJavascript test." >&3
   ddev exec -d /var/www/html/web "../vendor/bin/phpunit -v -c ./core/phpunit.xml.dist ./core/modules/system/tests/src/FunctionalJavascript/FrameworkTest.php"
   echo "Run a Nightwatch test." >&3
