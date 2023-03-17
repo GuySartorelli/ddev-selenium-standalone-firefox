@@ -63,14 +63,9 @@ If you use Behat as a test running, adjust your `behat.yml`:
     Behat\MinkExtension:
       base_url: http://mysite.ddev.site
       selenium2:
-        wd_host: http://selenium-chrome:4444/wd/hub
+        wd_host: http://selenium-firefox:4444/wd/hub
         capabilities:
-          chrome:
-            switches:
-              - "--disable-gpu"
-              - "--headless"
-              - "--no-sandbox"
-              - "--disable-dev-shm-usage"
+          firefox:
 ```
 
 - Drupal users can swap `Behat\MinkExtension` with `Drupal\MinkExtension` for extra goodness.
