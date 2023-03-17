@@ -24,6 +24,9 @@ This service can be used with any project type. The examples below are Drupal-sp
   - Drupal Test Traits
     - Ensure you have a working site that has the `weitzman/drupal-test-traits` Composer package.
     - `ddev exec -d /var/www/html/web "../vendor/bin/phpunit --bootstrap=../vendor/weitzman/drupal-test-traits/src/bootstrap-fast.php --printer '\Drupal\Tests\Listeners\HtmlOutputPrinter' ../vendor/weitzman/drupal-test-traits/tests/ExampleSelenium2DriverTest.php"`
+  - Behat
+    - See below for `behat.yml` configuration
+    - `composer require drupal/drupal-extension --dev`
 
 ## Watching the tests
 
@@ -51,6 +54,28 @@ You can now connect to [DDEV SITE URL]:5900 (password: `secret`) in your VNC cli
 
 Note that when using `ports`, only one project at a time can be running with port 5900.
 
+### Behat config example
+
+If you use Behat as a test running, adjust your `behat.yml`:
+
+```yml
+  extensions:
+    Behat\MinkExtension:
+      base_url: http://mysite.ddev.site
+      selenium2:
+        wd_host: http://selenium-chrome:4444/wd/hub
+        capabilities:
+          chrome:
+            switches:
+              - "--disable-gpu"
+              - "--headless"
+              - "--no-sandbox"
+              - "--disable-dev-shm-usage"
+```
+
+- Drupal users can swap `Behat\MinkExtension` with `Drupal\MinkExtension` for extra goodness.
+- You can remove/comment the `--headless` option to see the browser running in VNC. You can even interact with it when pausing (ie: `When I break` if your test)
+
 ## Contribute
 
 - Anyone is welcome to submit a PR to this repo.
@@ -58,4 +83,4 @@ Note that when using `ports`, only one project at a time can be running with por
 ## Maintainer
 
 - Contributed and maintained by [@bserem](https://github.com/bserem).
-- Forked by [ddev-selenium-standalone-chrome](https://github.com/ddev/ddev-selenium-standalone-chrome) by [@weitzman](https://github.com/weitzman).
+- Forked from [ddev-selenium-standalone-chrome](https://github.com/ddev/ddev-selenium-standalone-chrome) by [@weitzman](https://github.com/weitzman).
