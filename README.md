@@ -6,10 +6,23 @@ This service can be used with any project type. The examples below are Drupal-sp
 
 ## Install/Update
 
-1. `ddev get ddev/ddev-selenium-standalone-firefox`
-2. Optional. Update the provided .ddev/config.selenium-standalone-firefox.yaml as you see fit(and remove the #ddev-generated line). You can also just override lines in your .ddev/config.yaml
-3. Optional. Check config.selenium-standalone-firefox.yaml and docker-compose.selenium-firefox.yaml into your source control.
-4. Update by re-running `ddev get ddev/ddev-selenium-standalone-firefox`.
+For DDEV v1.23.5 or above run
+
+```sh
+ddev add-on get ddev/ddev-selenium-standalone-firefox
+```
+
+For earlier versions of DDEV run
+
+```sh
+ddev get ddev/ddev-selenium-standalone-firefox
+```
+
+### Optional steps
+
+1. Optional. Update the provided .ddev/config.selenium-standalone-firefox.yaml as you see fit(and remove the #ddev-generated line). You can also just override lines in your .ddev/config.yaml
+1. Optional. Check config.selenium-standalone-firefox.yaml and docker-compose.selenium-firefox.yaml into your source control.
+1. Update by re-running `ddev add-on get ddev/ddev-selenium-standalone-firefox`.
 
 ## Use
 
